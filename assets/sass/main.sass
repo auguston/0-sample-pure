@@ -1,0 +1,35 @@
+// bs reset
+@import bootstrap4/scss/0-bootstrap-reboot
+@import bootstrap4/scss/type
+@import bootstrap4/scss/utilities
+@import bootstrap4/scss/buttons
+
+// mdl
+@import mdl/layout/layout
+@import mdl/button/button
+@import mdl/menu/menu
+
+// sean
+@import helper/variables
+@import helper/media
+@import helper/helper
+@import helper/base
+@import modules/loading-mask
+
+// animated
+@import modules/animate/helpers/settings
+@import modules/animate/animate
+
+// 移除框線
+a, button, [role="button"]
+  &, &:focus
+    outline: none
+.btn:focus
+  box-shadow: none
+
+// 導覽列顏色
+.mdl-layout__header
+  background: #cd0505
+
+.page-content
+  padding-top: $px8

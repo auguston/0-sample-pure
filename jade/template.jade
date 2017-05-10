@@ -1,0 +1,59 @@
+doctype
+block config
+  include partials/_config
+
+html
+  include partials/_head
+
+  = "\n"
+  
+  body
+    
+    // .js-loading-mask 讀取中
+    .js-loading-mask
+      .progress
+        .indeterminate
+    
+    // 不固定
+        .mdl-layout.mdl-js-layout
+          header.mdl-layout__header.mdl-layout__header--scroll
+            nav.mdl-navigation
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      header.mdl-layout__header
+        .mdl-layout__header-row
+          span.mdl-layout-title Title
+          .mdl-layout-spacer
+          
+          // 桌機版導覽列
+          nav.mdl-navigation.mdl-layout--large-screen-only
+            a.mdl-navigation__link.btn-waves(href='') Link
+            a.mdl-navigation__link.btn-waves(href='') Link
+            a.mdl-navigation__link.btn-waves(href='') Link
+            a.mdl-navigation__link.btn-waves(href='') Link
+            button#nav-more.mdl-button.mdl-js-button.mdl-button--icon
+              i.material-icons more_vert
+            ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu(for='nav-more')
+              li.mdl-menu__item.btn-waves Some Action
+              li.mdl-menu__item.btn-waves Another Action
+              li.mdl-menu__item.btn-waves Yet Another Action
+      
+      // 手機版測邊導覽列
+      .mdl-layout__drawer
+        span.mdl-layout-title Title
+        nav.mdl-navigation
+          a.mdl-navigation__link.btn-waves(href='') Link
+          a.mdl-navigation__link.btn-waves(href='') Link
+          a.mdl-navigation__link.btn-waves(href='') Link
+          a.mdl-navigation__link.btn-waves(href='') Link
+      
+      main.mdl-layout__content.container-fluid
+        .page-content.row
+          .col
+            block main
+
+    //- js
+    script(src="assets/bundle/bundle.js")
+    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.7/riot.min.js")
+    //- script.
+    //- 	riot.mount('*');
+    block js

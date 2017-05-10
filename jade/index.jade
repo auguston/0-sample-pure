@@ -1,0 +1,68 @@
+extends template
+
+//- 修改網頁標題、描述
+block config
+  - var pageTitle = 'Sample pure'
+  - var description = 'Sample pure'
+
+//- 需要引用另外的css檔案時才使用
+block prepend link-tags
+  link(href="", rel="stylesheet")
+
+block main
+  h1 標題一
+  p 內文
+  h2 標題二
+  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat asperiores perspiciatis blanditiis voluptatum reiciendis architecto aspernatur tenetur, sint recusandae voluptate atque obcaecati ut dolorum ratione, libero molestiae error temporibus illo.
+  h3 標題三
+  p 內文
+  h4 標題四
+  p 內文
+  h5 標題五
+  p 內文
+  h6 標題六
+  p 內文
+  p 內文
+  p 內文
+  p 內文
+  a(href="#") 超連結
+  hr
+  ul
+    li 無序
+    li 無序
+    li 無序
+  hr
+  ol
+    li 有序
+    li 有序
+    li 有序
+  hr
+  dl
+    dt dt標題
+    dd dd內文
+  hr
+  form
+    fieldset
+      legend 表單樣式
+      label 標籤
+      input(type="text")
+      select(name="")
+        option(value="") 選項
+        option(value="") 選項
+        option(value="") 選項
+      button.btn(type="button") 送出
+
+  hr
+  table
+    caption 表格樣式
+    tr
+      th 標題
+      th 標題
+      th 標題
+    tr
+      td 儲存格
+      td 儲存格
+      td 儲存格
+  a.btn.btn-waves(href="") 按鈕
+  a.btn.disabled(disabled) disabled按鈕
+  a.btn.-block(href="") 滿版按鈕
