@@ -20,6 +20,12 @@
 @import modules/animate/helpers/settings
 @import modules/animate/animate
 
+// 修正bug
+.mdl-layout__container
+  position: relative
+.col
+  overflow-x: hidden
+
 // 移除框線
 a, button, [role="button"]
   &, &:focus
