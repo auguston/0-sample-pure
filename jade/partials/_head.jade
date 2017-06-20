@@ -6,14 +6,33 @@ head
     name="description"
     content=description
   )
+  link(rel="canonical", href=fburl)
   meta(charset="utf-8")
   meta(http-equiv="X-UA-Compatible", content="IE=edge, chrome=1")
   meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui")
+
+  //- chrome網址列顏色
+  meta(name="theme-color", content="#263238")
+  
+  //- safari網址列顏色
+  meta(name="apple-mobile-web-app-status-bar-style", content="#263238")
 
   //- 要額外引用的css，用block prepend 或 append link引用
   block link-tags
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(href="assets/bundle/bundle.css", rel="stylesheet")
+
+  = "\n"
+  = "\n"
+  = "\n"
+
+  //- fb
+  meta(property="og:url", content=fburl)
+  meta(property="og:site_name", content="")
+  meta(property="og:title", content=pageTitle)
+  meta(property="og:description", content=description)
+  meta(property="og:image", content="")
+  meta(name="keywords", content="")
 
   = "\n"
   = "\n"
