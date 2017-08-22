@@ -7,9 +7,7 @@ module.exports = {
                 './assets/sass/mdl/layout/layout.js',
                 './assets/sass/mdl/button/button.js',
                 './assets/sass/mdl/menu/menu.js',
-                './assets/vendor/waves/waves.min.js',
-                './assets/js/es6.js',
-                './assets/js/main.js'
+                './assets/vendor/waves/waves.min.js'
             ],
             styles: [
                 './assets/css/bootstrap4/scss/bootstrap-grid.css',

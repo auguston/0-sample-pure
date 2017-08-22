@@ -1,55 +1,55 @@
 // 引用外掛
-var gulp = require('gulp'),
-    // clean
-    del = require('del'),
-    // jade
-    jade = require('gulp-jade'),
-    // postCss
-    postcss = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer'),
-    sass = require('gulp-sass'),
-    lost = require('lost'),
-    rucksack = require('rucksack-css'),
-    // 整個sass資料夾import
-    bulkSass = require('gulp-sass-bulk-import'),
-    // markdown
-    markdown = require('gulp-markdown'),
-    // ES6
-    babel = require("gulp-babel"),
-    browserify = require('browserify'),
-    babelify = require('babelify'),
-    source = require('vinyl-source-stream'),
-    // 編譯riot.js
-    riot = require('gulp-riot'),
-    // 壓縮css
-    minifyCSS = require('gulp-minify-css'),
-    // 重新命名min檔用
-    rename = require("gulp-rename"),
-    // 偵錯工具
-    plumber = require('gulp-plumber'),
-    notify = require("gulp-notify"),
-    // sourcemap
-    sourcemaps = require('gulp-sourcemaps'),
-    // bundle
-    bundle = require('gulp-bundle-assets'),
-    // webServer
-    webServer = require('gulp-webserver');
+const gulp = require('gulp'),
+			// clean
+			del = require('del'),
+			// jade
+			jade = require('gulp-jade'),
+			// postCss
+			postcss = require('gulp-postcss'),
+			autoprefixer = require('autoprefixer'),
+			sass = require('gulp-sass'),
+			lost = require('lost'),
+			rucksack = require('rucksack-css'),
+			// 整個sass資料夾import
+			bulkSass = require('gulp-sass-bulk-import'),
+			// markdown
+			markdown = require('gulp-markdown'),
+			// ES6
+			babel = require("gulp-babel"),
+			browserify = require('browserify'),
+			babelify = require('babelify'),
+			source = require('vinyl-source-stream'),
+			// 編譯riot.js
+			riot = require('gulp-riot'),
+			// 壓縮css
+			minifyCSS = require('gulp-minify-css'),
+			// 重新命名min檔用
+			rename = require("gulp-rename"),
+			// 偵錯工具
+			plumber = require('gulp-plumber'),
+			notify = require("gulp-notify"),
+			// sourcemap
+			sourcemaps = require('gulp-sourcemaps'),
+			// bundle
+			bundle = require('gulp-bundle-assets'),
+			// webServer
+			webServer = require('gulp-webserver');
 
 // 路徑
-var src_jade = './jade/*.jade',
-    end_jade = './',
-    src_sass = ['./assets/sass/**/*.sass', './assets/sass/**/*.scss'],
-    end_Sass = './assets/css/',
-    end_bundle = './assets/bundle/',
-    src_mark = './*.md',
-    end_mark = './',
-    src_riot = './assets/riot/tag/*.tag',
-    end_riot = './assets/riot/js/',
-    src_es6js = './assets/es6/es6.js',
-    end_es6js = './assets/js/';
+const src_jade = './jade/*.jade',
+			end_jade = './',
+			src_sass = ['./assets/sass/**/*.sass', './assets/sass/**/*.scss'],
+			end_Sass = './assets/css/',
+			end_bundle = './assets/bundle/',
+			src_mark = './*.md',
+			end_mark = './',
+			src_riot = './assets/riot/tag/*.tag',
+			end_riot = './assets/riot/js/',
+			src_es6js = './assets/es6/es6.js',
+			end_es6js = './assets/js/';
 
 // webServer網址
-var serverSite = 'seansu.local';
+const serverSite = 'seansu.local';
 
 // sass編譯css的排列
 /*
@@ -58,14 +58,12 @@ var serverSite = 'seansu.local';
 	compact: 每一段變成一行
 	compressed: 壓縮成一行
 */
-var sassCompile = 'compact';
+const sassCompile = 'compact';
 
-gulp.task('clean', function () {
-  return del(['./assets/bundle/*']);
-});
+gulp.task('clean', () => del(['./assets/bundle/*']));
 
 // jade
-gulp.task('template', function() {
+gulp.task('template', () => {
 	return gulp.src(src_jade)
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
@@ -81,7 +79,7 @@ gulp.task('template', function() {
 
 
 // 讓sass可以import css
-gulp.task('css', function() {
+gulp.task('css', () => {
 	gulp.src('assets/vendor/**/*.css')
 		.pipe(importCss())
 		.pipe(gulp.dest(end_Sass));
@@ -89,7 +87,7 @@ gulp.task('css', function() {
 
 
 // postCss
-gulp.task('styles', function() {
+gulp.task('styles', () => {
 	var processors = [
 		lost,
 		rucksack({
@@ -114,7 +112,7 @@ gulp.task('styles', function() {
 });
 
 // ES6
-gulp.task('es6', function() {
+gulp.task('es6', () => {
   return browserify({
 		// 要編譯哪些檔案
     entries: [src_es6js]
@@ -130,7 +128,7 @@ gulp.task('es6', function() {
 });
 
 // 編譯riot.js
-gulp.task('riot', function() {
+gulp.task('riot', () => {
 	gulp.src(src_riot)
 		.pipe(riot({
 			compact: true
@@ -140,7 +138,7 @@ gulp.task('riot', function() {
 
 
 // 合併、壓縮js檔案
-gulp.task('bundle', function() {
+gulp.task('bundle', () => {
 	return gulp.src('./bundle.config.js')
 		.pipe(bundle())
 		/*
@@ -158,7 +156,7 @@ gulp.task('bundle', function() {
 
 
 // markdown，需要時在拿掉註解
-// gulp.task('markdown', function() {
+// gulp.task('markdown', () => {
 //   return gulp.src(src_mark)
 //     .pipe(plumber({
 //       errorHandler: notify.onError("Error: <%= error.message %>")
@@ -172,7 +170,7 @@ gulp.task('bundle', function() {
 
 
 // 監聽
-gulp.task('watch', function() {
+gulp.task('watch', () => {
 	// gulp.watch(['./assets/js/*.js', './assets/css/*.css'], ['clean']); // 每次都clean會花時間
 	gulp.watch(src_jade, ['template']);
 	gulp.watch(src_sass, ['styles']);
@@ -184,7 +182,7 @@ gulp.task('watch', function() {
 
 
 // server
-gulp.task('webServer', function() {
+gulp.task('webServer', () => {
 	gulp.src('./')
 		.pipe(webServer({
 			host: serverSite,
