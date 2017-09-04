@@ -19,6 +19,9 @@ const gulp = require('gulp'),
 			browserify = require('browserify'),
 			babelify = require('babelify'),
 			source = require('vinyl-source-stream'),
+			// ES6後壓縮
+			buffer = require('vinyl-buffer'),
+			uglify = require('gulp-uglify'),
 			// 編譯riot.js
 			riot = require('gulp-riot'),
 			// 壓縮css
@@ -123,6 +126,9 @@ gulp.task('es6', () => {
     .bundle()
     // bundle 後的檔案名稱
 		.pipe(source('es6.js'))
+		// 壓縮檔案
+		.pipe(buffer())
+		.pipe(uglify())
 		// bundle 完的檔案要放哪
     .pipe(gulp.dest(end_es6js));
 });
