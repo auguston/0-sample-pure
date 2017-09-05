@@ -1,5 +1,5 @@
 head
-  title #{pageTitle}
+  title=pageTitle
 
   //- description 用 block prepend meta-tags
   meta(
@@ -22,8 +22,9 @@ head
 
   //- 要額外引用的css，用block prepend 或 append link引用
   block link-tags
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-    link(href="assets/bundle/bundle.css", rel="stylesheet")
+    link(rel="stylesheet", href="assets/bundle/bundle.css")
 
   = "\n"
   = "\n"
