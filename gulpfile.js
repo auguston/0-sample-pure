@@ -2,8 +2,8 @@
 const gulp = require('gulp'),
 			// clean
 			del = require('del'),
-			// jade
-			jade = require('gulp-jade'),
+			// pug
+			pug = require('gulp-pug'),
 			// postCss
 			postcss = require('gulp-postcss'),
 			autoprefixer = require('autoprefixer'),
@@ -39,16 +39,16 @@ const gulp = require('gulp'),
 			webServer = require('gulp-webserver');
 
 // 路徑
-const src_jade = './jade/*.jade',
-			end_jade = './',
+const src_pug = './pug/*.pug',
+			end_pug = './',
 			src_sass = ['./assets/sass/**/*.sass', './assets/sass/**/*.scss'],
-			end_Sass = './assets/css/',
+			end_sass = './assets/css/',
 			end_bundle = './assets/bundle/',
 			src_mark = './*.md',
 			end_mark = './',
 			src_riot = './assets/riot/tag/*.tag',
 			end_riot = './assets/riot/js/',
-			src_es6js = './assets/es6/es6.js',
+			src_es6js = './assets/js/main.js',
 			end_es6js = './assets/js/';
 
 // webServer網址
@@ -65,18 +65,18 @@ const sassCompile = 'compact';
 
 gulp.task('clean', () => del(['./assets/bundle/*']));
 
-// jade
+// pug
 gulp.task('template', () => {
-	return gulp.src(src_jade)
+	return gulp.src(src_pug)
 	.pipe(plumber({
 		errorHandler: notify.onError("Error: <%= error.message %>")
 	}))
-	.pipe(jade({
+	.pipe(pug({
 		pretty: true
 	}))
-	.pipe(gulp.dest(end_jade))
+	.pipe(gulp.dest(end_pug))
 	.pipe(notify({
-		message: 'Jade Compily'
+		message: 'pug Compily'
 	}));
 });
 
@@ -85,7 +85,7 @@ gulp.task('template', () => {
 gulp.task('css', () => {
 	gulp.src('assets/vendor/**/*.css')
 		.pipe(importCss())
-		.pipe(gulp.dest(end_Sass));
+		.pipe(gulp.dest(end_sass));
 });
 
 
@@ -111,7 +111,7 @@ gulp.task('styles', () => {
 		}).on('error', sass.logError))
 		.pipe(postcss(processors))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(end_Sass));
+		.pipe(gulp.dest(end_sass));
 });
 
 // ES6
@@ -125,7 +125,7 @@ gulp.task('es6', () => {
     }))
     .bundle()
     // bundle 後的檔案名稱
-		.pipe(source('es6.js'))
+		.pipe(source('main.min.js'))
 		// 壓縮檔案
 		.pipe(buffer())
 		.pipe(uglify())
@@ -178,7 +178,7 @@ gulp.task('bundle', () => {
 // 監聽
 gulp.task('watch', () => {
 	// gulp.watch(['./assets/js/*.js', './assets/css/*.css'], ['clean']); // 每次都clean會花時間
-	gulp.watch(src_jade, ['template']);
+	gulp.watch(src_pug, ['template']);
 	gulp.watch(src_sass, ['styles']);
 	gulp.watch('./assets/es6/*.js', ['es6']);
 	gulp.watch(src_riot, ['riot']);

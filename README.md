@@ -10,9 +10,9 @@
 ### assets
  - bundle：./bundle.config.js 可以設定，需使用 gulp
  - css
- - js
+ - js：main.js 用 es6 寫，編譯為 main.min.js
  - sass：需使用 gulp 編譯
  - vendor：使用套件
 
-### jade
+### pug
 需使用 gulp 編譯。
