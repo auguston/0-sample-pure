@@ -2014,6 +2014,22 @@ a, area, button, [role="button"], input, label, select, summary, textarea { -ms-
 
 .js-loading-mask .progress .indeterminate:after { content: ''; position: absolute; background-color: inherit; top: 0; left: 0; bottom: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: left, right; -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite; animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite; -webkit-animation-delay: 1.15s; animation-delay: 1.15s; }
 
+[type="radio"]:not(:checked), [type="radio"]:checked { position: absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; opacity: 0; pointer-events: none; }
+
+[type="radio"]:not(:checked) + label, [type="radio"]:checked + label { position: relative; padding-left: 35px; cursor: pointer; display: inline-block; height: 25px; line-height: 25px; font-size: 16px; font-size: 1rem; -webkit-transition: .28s ease; -o-transition: .28s ease; transition: .28s ease; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after, [type="radio"]:checked + label:before, [type="radio"]:checked + label:after { border-radius: 50%; }
+
+[type="radio"] + label:before, [type="radio"] + label:after { content: ''; position: absolute; left: 0; top: 0; margin: 4px; width: 16px; height: 16px; z-index: 0; -webkit-transition: .28s ease; -o-transition: .28s ease; transition: .28s ease; }
+
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after { border: 1px solid #000000; border: 1px solid rgba(0, 0, 0, 0.15); }
+
+[type="radio"]:not(:checked) + label:after { -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); }
+
+[type="radio"]:checked + label:before { border: 2px solid #2196F3; }
+
+[type="radio"]:checked + label:after { background-color: #2196F3; border: 1px solid #2196F3; -webkit-transform: scale(0.5); -ms-transform: scale(0.5); transform: scale(0.5); }
+
 .mdl-layout__container { position: relative; }
 
 .col { overflow-x: hidden; }
@@ -2022,7 +2038,7 @@ a, a:focus, button, button:focus, [role="button"], [role="button"]:focus { outli
 
 .btn:focus { -webkit-box-shadow: none; box-shadow: none; }
 
-.mdl-layout__header { background: #cd0505; }
+.mdl-layout__header { background: #2196F3; }
 
 .page-content { padding-top: 8px; padding-top: 0.5rem; }
 

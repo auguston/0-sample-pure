@@ -1,0 +1,43 @@
+[type="radio"]
+  &:not(:checked), &:checked
+    position: absolute
+    opacity: 0
+    pointer-events: none
+    + label
+      position: relative
+      padding-left: 35px
+      cursor: pointer
+      display: inline-block
+      height: 25px
+      line-height: 25px
+      font-size: 1rem
+      transition: .28s ease
+      user-select: none
+    + label:before, + label:after
+      border-radius: 50%
+  
+  // unchecked
+  + label:before, + label:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    margin: 4px
+    width: 16px
+    height: 16px
+    z-index: 0
+    transition: .28s ease
+  &:not(:checked)
+    + label:before, + label:after
+      border: 1px solid rgba(0,0,0,.15)
+    + label:after
+      transform: scale(0)
+  
+  // checked
+  &:checked
+    + label:before
+      border: 2px solid $main
+    + label:after
+      background-color: $main
+      border: 1px solid $main
+      transform: scale(.5)
