@@ -22,8 +22,6 @@ const gulp = require('gulp'),
 			// ES6後壓縮
 			buffer = require('vinyl-buffer'),
 			uglify = require('gulp-uglify'),
-			// 編譯riot.js
-			riot = require('gulp-riot'),
 			// 壓縮css
 			minifyCSS = require('gulp-minify-css'),
 			// 重新命名min檔用
@@ -46,8 +44,6 @@ const src_pug = './pug/*.pug',
 			end_bundle = './assets/bundle/',
 			src_mark = './*.md',
 			end_mark = './',
-			src_riot = './assets/riot/tag/*.tag',
-			end_riot = './assets/riot/js/',
 			src_es6js = './assets/js/main.js',
 			end_es6js = './assets/js/';
 
@@ -133,15 +129,6 @@ gulp.task('es6', () => {
     .pipe(gulp.dest(end_es6js));
 });
 
-// 編譯riot.js
-gulp.task('riot', () => {
-	gulp.src(src_riot)
-		.pipe(riot({
-			compact: true
-		}))
-		.pipe(gulp.dest(end_riot));
-});
-
 
 // 合併、壓縮js檔案
 gulp.task('bundle', () => {
@@ -181,7 +168,6 @@ gulp.task('watch', () => {
 	gulp.watch(src_pug, ['template']);
 	gulp.watch(src_sass, ['styles']);
 	gulp.watch('./assets/es6/*.js', ['es6']);
-	gulp.watch(src_riot, ['riot']);
 	gulp.watch(['./bundle.config.js', './assets/js/*.js', './assets/css/*.css'], ['bundle']);
 	// gulp.watch(src_mark, ['markdown']);
 });
@@ -199,4 +185,4 @@ gulp.task('webServer', () => {
 
 
 // cmd輸入"gulp"時，要執行的task
-gulp.task('default', ['clean', 'template', 'styles', 'es6', 'riot', 'bundle', 'webServer', 'watch']);
+gulp.task('default', ['clean', 'template', 'styles', 'es6', 'bundle', 'webServer', 'watch']);

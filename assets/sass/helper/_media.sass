@@ -1,41 +1,41 @@
 // 寬螢幕
 =m-1440-up
-	@media screen and (min-width: 1440px)
+	@media screen and (min-width: 1441px)
 		@content
 =m-1440
 	@media screen and (max-width: 1440px)
 		@content
 
 =m-1366-up
-	@media screen and (min-width: 1366px)
+	@media screen and (min-width: 1367px)
 		@content
 =m-1366
 	@media screen and (max-width: 1366px)
 		@content
 
 =m-1280-up
-	@media screen and (min-width: 1200px)
+	@media screen and (min-width: 1281px)
 		@content
 =m-1280
-	@media screen and (max-width: 1200px)
+	@media screen and (max-width: 1280px)
 		@content
 
 =m-1200-up
-	@media screen and (min-width: 1200px)
+	@media screen and (min-width: 1201px)
 		@content
 =m-1200
 	@media screen and (max-width: 1200px)
 		@content
 
 =m-1024-up
-	@media screen and (min-width: 1024px)
+	@media screen and (min-width: 1025px)
 		@content
 =m-1024
 	@media screen and (max-width: 1024px)
 		@content
 
 // 電腦螢幕
-=m-769
+=m-768-up
 	@media screen and (min-width: 769px)
 		@content
 
@@ -66,6 +66,10 @@
 // 手機螢幕
 =m-480
 	@media screen and (max-width: 480px)
+		@content
+
+=m-380
+	@media screen and (max-width: 430px)
 		@content
 
 =m-320

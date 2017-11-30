@@ -1950,11 +1950,11 @@ input.mdl-button[type="submit"] { -webkit-appearance: none; }
 
 html { -webkit-overflow-scrolling: touch; }
 
-@font-face { font-family: sans-serif; src: local("微軟正黑體"), local("Microsoft JhengHei"), local("MingLiU"), local("sans-serif"); unicode-range: U+4E00-9FFF; }
+@font-face { font-family: public-serif; src: local("微軟正黑體"), local("Microsoft JhengHei"), local("MingLiU"), local("sans-serif"); unicode-range: U+4E00-9FFF; }
 
-@font-face { font-family: sans-serif; src: local("arial"), local("sans-serif"); unicode-range: U+00-024F; }
+@font-face { font-family: public-serif; src: local("arial"), local("sans-serif"); unicode-range: U+00-024F; }
 
-body { background-color: #fff; vertical-align: middle; line-height: 1.5; font-family: sans-serif; letter-spacing: 1.28px; letter-spacing: .08rem; font-weight: normal; color: #292b2c; }
+body { background-color: #fff; vertical-align: middle; line-height: 1.5; font-family: public-serif; letter-spacing: 1.28px; letter-spacing: .08rem; font-weight: normal; color: #292b2c; }
 
 a { color: #2196F3; }
 
